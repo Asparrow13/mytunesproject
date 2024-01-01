@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane style="-fx-background-color: #C9BFE5;" xmlns="http://javafx.com/javafx/20.0.1"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MusicController">
+    <VBox spacing="20">
+        <padding>
+            <Insets top="20" right="60" bottom="20" left="60"/>
+        </padding>
+        <HBox spacing="500">
+            <padding>
+                <Insets top="10" right="30" bottom="10" left="30"/>
+            </padding>
+            <AnchorPane>
+                <VBox spacing="20" alignment="CENTER">
+                    <HBox spacing="5" alignment="CENTER">
+                        <Button fx:id="skipBtnB" mnemonicParsing="false"
+                                text="⏪" onAction="#handleSkipB"/>
+                        <Button fx:id="playBtn" mnemonicParsing="false"
+                                text="▶" onAction="#handlePlaySong"/>
+                        <Button fx:id="skipBtnF" mnemonicParsing="false"
+                                text="⏩" onAction="#handleSkipF"/>
+                    </HBox>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label fx:id="sliderLbl" text="🔊">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Label>
+                        <Slider fx:id="volumeSlider" style="-fx-background-color: #C9BFE5;"/>
+                    </HBox>
+                </VBox>
+            </AnchorPane>
+            <HBox>
+                <Label fx:id="filterLbl" text="Filter:">
+                    <HBox.margin>
+                        <Insets top="30.0"/>
+                    </HBox.margin>
+                </Label>
+                <TextField prefHeight="40.0" prefWidth="200.0">
+                    <HBox.margin>
+                        <Insets left="8.0" top="30.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="searchBtn" mnemonicParsing="false" text="🔍">
+                    <HBox.margin>
+                        <Insets left="10.0" top="30.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+            <HBox/>
+        </HBox>
+        <HBox spacing="10">
+            <VBox spacing="20" alignment="CENTER">
+                <Label fx:id="playlistLbl" text="Playlists">
+                    <VBox.margin>
+                        <Insets bottom="3.0"/>
+                    </VBox.margin>
+                </Label>
+                <ListView fx:id="playlistView"/>
+                <HBox alignment="CENTER">
+                    <Button fx:id="newPlaylistBtn" mnemonicParsing="false" onAction="#openAddPlaylistForm"
+                            text="New">
+                        <HBox.margin>
+                            <Insets right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="editPlaylistBtn" mnemonicParsing="false" onAction="#openEditPlaylistForm"
+                            text="Edit">
+                        <HBox.margin>
+                            <Insets left="5.0" right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="deletePlaylistBtn" mnemonicParsing="false" onAction="#handleDeletePlaylist"
+                            text="Delete">
+                        <HBox.margin>
+                            <Insets left="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                </HBox>
+            </VBox>
+            <VBox spacing="20" alignment="CENTER">
+                <Label fx:id="songOnPlaylistLbl" text="Songs on Playlist">
+                    <VBox.margin>
+                        <Insets bottom="3.0"/>
+                    </VBox.margin>
+                </Label>
+                <ListView fx:id="songsOnPlaylistView"/>
+                <HBox alignment="CENTER">
+                    <Button fx:id="upBtn" mnemonicParsing="false" text="↑">
+                        <HBox.margin>
+                            <Insets right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="downBtn" mnemonicParsing="false" text="↓">
+                        <HBox.margin>
+                            <Insets left="5.0" right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="deleteSongOnPlaylistBtn" mnemonicParsing="false" text="Delete" onAction="#handleRemoveFromPlaylist">
+                        <HBox.margin>
+                            <Insets left="45.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                </HBox>
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets top="100"/>
+                </padding>
+                <Button fx:id="addToPlaylistBtn" mnemonicParsing="false" text="←" onAction="#handleAddToPlaylist">
+                    <VBox.margin>
+                        <Insets left="7.0" right="5.0"/>
+                    </VBox.margin>
+                </Button>
+            </VBox>
+            <VBox spacing="20" alignment="CENTER">
+                <Label fx:id="songsLbl" text="Songs">
+                    <VBox.margin>
+                        <Insets bottom="3.0"/>
+                    </VBox.margin>
+                </Label>
+                <TableView fx:id="SongTableView">
+                    <columns>
+                        <TableColumn fx:id="TitleColumn" prefWidth="200.0" text="Title">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="Title"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="ArtistColumn" prefWidth="150.0" text="Artist">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="Artist"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="GenreColumn" prefWidth="100.0" text="Genre">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="Genre"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="TimeColumn" prefWidth="100.0" text="Time">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="Time"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER">
+                    <Button fx:id="newSongBtn" mnemonicParsing="false" onAction="#openAddSongForm" text="New">
+                        <HBox.margin>
+                            <Insets right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="editSongBtn" mnemonicParsing="false" onAction="#openEditSongForm" text="Edit">
+                        <HBox.margin>
+                            <Insets left="5.0" right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="deleteSongBtn" mnemonicParsing="false" onAction="#handleDeleteSong" text="Delete">
+                        <HBox.margin>
+                            <Insets left="5.0" right="5.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#handleClose" style="-fx-background-color: #E5DFF6;" text="Close">
+                        <HBox.margin>
+                            <Insets left="170.0" top="3.0"/>
+                        </HBox.margin>
+                    </Button>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</AnchorPane >

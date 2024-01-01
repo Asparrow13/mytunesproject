@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.controller.AddSongController"
+            prefHeight="400.0" prefWidth="600.0">
+    <AnchorPane prefHeight="400.0" prefWidth="601.0" style="-fx-background-color: #8897b3;">
+        <Label layoutX="142.0" layoutY="122.0" text="Title:"/>
+        <TextField fx:id="songTitleField" layoutX="203.0" layoutY="117.0" prefHeight="26.0" prefWidth="221.0"
+                   style="-fx-background-color: #E5DFF6;"/>
+        <Label layoutX="139.0" layoutY="163.0" text="Artist:"/>
+        <TextField fx:id="songArtistField" layoutX="203.0" layoutY="158.0" prefHeight="26.0" prefWidth="221.0"
+                   style="-fx-background-color: #E5DFF6;"/>
+        <Label layoutX="133.0" layoutY="205.0" text="Genre:"/>
+        <Label layoutX="140.0" layoutY="245.0" text="Time:"/>
+        <Label layoutX="146.0" layoutY="288.0" text="File:"/>
+        <TextField fx:id="songTimeField" layoutX="203.0" layoutY="240.0" prefHeight="26.0" prefWidth="108.0"
+                   style="-fx-background-color: #E5DFF6;"/>
+        <TextField fx:id="songFilePathField" layoutX="203.0" layoutY="283.0" prefHeight="26.0" prefWidth="221.0"
+                   style="-fx-background-color: #E5DFF6;"/>
+        <Button fx:id="chooseSong" layoutX="434.0" layoutY="282.0" mnemonicParsing="false" onAction="#chooseSongBtn"
+                style="-fx-background-color: #E5DFF6;" text="Choose"/>
+        <ChoiceBox fx:id="songGenreFieldChoiceBox" layoutX="203.0" layoutY="200.0" prefHeight="26.0" prefWidth="221.0" style="-fx-background-color: #E5DFF6;" />
+        <Button fx:id="editSongBtn" layoutX="498.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleEditSong"
+                text="Edit"/>
+    </AnchorPane>
+</AnchorPane>
