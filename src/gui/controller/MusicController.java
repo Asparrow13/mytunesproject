@@ -355,6 +355,7 @@ public class MusicController {
 
         if (selectedSong != null && selectedPlaylist != null) {
             if(!alreadyOnPlaylist) {
+                songsOnPlaylistView.getItems().clear();
                 musicModel.addSongToPlaylist(selectedSong, selectedPlaylist);
                 System.out.println("ADDED");
                 initializePlaylistSongsView();
